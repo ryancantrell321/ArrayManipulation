@@ -16,8 +16,10 @@ Institution: Leading University, Sylhet
 //--> Function Declarations
 void display();
 void info();
-void show_array(int array[], int count);
+void show_array(int array[], int *count);
 void show_array_size(int array_size, int count);
+void array_input(int size, int *array, int *count);
+void remove_val(int array[], int * array_size, int * count, int remove_value);
 
 //--> Main Code
 int main()
@@ -72,37 +74,56 @@ int main()
                 continue;
 
             case 2: //--> Entering Array value
-                for (int i = 0; i < size; i++)
-                {
-                    printf("Enter Array Element %d: ", i + 1);
-                    if (scanf("%d", &array[i]) != 1)
-                    {
-                        printf("Entry Exited (Type 4 to display the values entered)");
-                        printf("\n\n");
 
-                        while (getchar() != '\n');
-                        break;
-                    }
-                    count++;
+                array_input(size, array, &count);
 
-                    if (count == size)
-                    {
-                        printf("The Array is Full!");
-                        printf("\n");
-                        printf("(Type 4 to display the values)");
-                        printf("\n");
-                        printf("(Type 1 to view the array length)");
-                        printf("\n\n");
-                        break;
-                    }
-                }
                 continue;
 
 
             case 3:
-                show_array(array, count);
+                show_array(array, &count);
                 continue;
+
+            case 4:
+
+                int u = 0, v = 0;
+
+                if (count == 0)
+                {
+                    printf("Array is empty. Please insert values first!");
+                    printf("\n\n");
+
+                    continue;
+                }
+
+                printf("Enter update position (1 to %d): ", count);
+                scanf("%d", &u);
+
+                if (u < 1 || u > count)
+                {
+                    printf("The input must be between 1-%d. Please try again", count);
+                    printf("\n");
+
+                    while (getchar() != '\n');
+                    continue;
+                }
+
+
+                printf("\n");
+
+                printf("Enter new value: ");
+                scanf("%d", &v);
+
+                array[u - 1] = v;
+
+                printf("Value updated successfully!");
+
+                while (getchar() != '\n');
+                continue;
+
+
             }
+
 
 
             return 0;
@@ -150,10 +171,10 @@ void display()
 
 }
 
-void show_array(int array[], int count)
+void show_array(int array[], int *count)
 {
     printf("Array elements are:\n");
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < * count; i++)
     {
         if (array[i] == 0)
         {
@@ -174,3 +195,50 @@ void show_array_size(int array_size, int count)
     printf("Current Array Length: %d", count);
     printf("\n\n");
 }
+
+void array_input(int size, int *array, int *count)
+{
+    for (int i = 0; i < size; i++)
+    {
+        printf("Enter Array Element %d: ", i + 1);
+        if (scanf("%d", &array[i]) != 1)
+        {
+            printf("Entry Exited (Type 3 to display the values entered)");
+            printf("\n\n");
+
+            while (getchar() != '\n');
+            break;
+        }
+        (*count)++;
+
+        if (*count == size)
+        {
+            printf("The Array is Full!");
+            printf("\n");
+            printf("(Type 3 to display the values)");
+            printf("\n");
+            printf("(Type 1 to view the array length)");
+            printf("\n\n");
+            break;
+        }
+    }
+}
+
+void remove_val(int array[], int * array_size, int * count, int remove_value)
+{
+    for (int k = 0; k < *array_size; k++)
+    {
+        if (array[k] == remove_value)
+        {
+            for (int w = k; w < (*array_size - 1); w++)
+            {
+                array[w] = array[w+1];
+            }
+            (* array_size)--;
+            (* count)--;
+            array[* array_size] = 0;
+            k--;
+        }
+    }
+}
+
