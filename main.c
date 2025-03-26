@@ -9,24 +9,105 @@ Department: Computer Science and Engineering
 Institution: Leading University, Sylhet
 */
 
-#include <stdio.h>
+# include <stdio.h>
+# include <ctype.h>
+# include <stdbool.h>
 
 //--> Function Declarations
 void display();
 void info();
+void show_array(int array[], int count);
 
 //--> Main Code
 int main()
 {
-    //--> Specifying the size of the array
-    int size = 0;
-    int array[size];
+    static int count = 0;
+    info();
+
+    while (true)
+    {
+        //--> Array Size Control
+        int size = 0;
+
+        printf("Enter the length of the array (1-10000): ");
+        scanf("%d", &size);
+
+        if (size < 1 || size > 10000)
+        {
+            printf("The input must be between 1-10000");
+            printf("\n");
+            while (getchar() != '\n'); // clearing input buffer to make space for new inputs
+            continue;
+        }
+
+        int array[size];
+        int array_size = sizeof(array) / sizeof(array[0]);
 
 
+        while (true){
+
+            display();
+
+            //==> choice control
+            int choice = 0;
+
+            printf("Enter your choice (1-9): ");
+            scanf("%d", &choice);
+
+            if (choice < 1 || choice > 10)
+            {
+                printf("The input must be between 1-10. Please try again");
+                printf("\n");
+                while (getchar() != '\n');
+                continue;
+            }
+
+            switch (choice)
+            {
+            case 1: //--> Array Size
+                printf("Maximum Specified Array Size: %d", array_size);
+                printf("\n");
+                printf("Current Array Length: %d", count);
+                printf("\n\n");
+                continue;
+
+            case 2: //--> Entering Array value
+                for (int i = 0; i < size; i++)
+                {
+                    printf("Enter Array Element %d: ", i + 1);
+                    if (scanf("%d", &array[i]) != 1)
+                    {
+                        printf("Entry Exited (Type 4 to display the values entered)");
+                        printf("\n\n");
+
+                        while (getchar() != '\n');
+                        break;
+                    }
+                    count++;
+
+                    if (count == size)
+                    {
+                        printf("The Array is Full!");
+                        printf("\n");
+                        printf("(Type 4 to display the values)");
+                        printf("\n");
+                        printf("(Type 1 to view the array length)");
+                        printf("\n\n");
+                        break;
+                    }
+                }
+                continue;
 
 
+            case 3:
+                show_array(array, count);
+                continue;
+            }
 
-    return 0;
+
+            return 0;
+        }
+    }
 }
 
 //--> Function Logic
@@ -39,22 +120,22 @@ void info()
     printf("You will first have to specify the number of elements you will enter. 0 is considered a blank value.");
     printf("\n");
     printf("Then you will be given several options to choose from.");
-    printf("\n");
+    printf("\n\n");
 
 }
 void display()
 {
     printf("Options: ");
     printf("\n");
-    printf("1. Insert Values");
+    printf("1. Display Array Size");
     printf("\n");
-    printf("2. Update Values");
+    printf("2. Insert Values");
     printf("\n");
-    printf("3. Delete Values");
+    printf("3. Display Values");
     printf("\n");
-    printf("4. Display Values");
+    printf("4. Update Values");
     printf("\n");
-    printf("5. Display Array Size");
+    printf("5. Delete Values");
     printf("\n");
     printf("6. Search Values");
     printf("\n");
@@ -67,4 +148,21 @@ void display()
     printf("10. Exit");
     printf("\n\n");
 
+}
+
+void show_array(int array[], int count)
+{
+    printf("Array elements are:\n");
+    for (int i = 0; i < count; i++)
+    {
+        if (array[i] == 0)
+        {
+            printf("");
+        }
+        else {
+            printf("%d ", array[i]);
+
+        }
+    }
+    printf("\n\n");
 }
