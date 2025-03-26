@@ -17,6 +17,7 @@ Institution: Leading University, Sylhet
 void display();
 void info();
 void show_array(int array[], int count);
+void show_array_size(int array_size, int count);
 
 //--> Main Code
 int main()
@@ -65,10 +66,9 @@ int main()
             switch (choice)
             {
             case 1: //--> Array Size
-                printf("Maximum Specified Array Size: %d", array_size);
-                printf("\n");
-                printf("Current Array Length: %d", count);
-                printf("\n\n");
+
+                show_array_size(array_size, count);
+
                 continue;
 
             case 2: //--> Entering Array value
@@ -164,5 +164,13 @@ void show_array(int array[], int count)
 
         }
     }
+    printf("\n\n");
+}
+
+void show_array_size(int array_size, int count)
+{
+    printf("Maximum Specified Array Size: %d", array_size);
+    printf("\n");
+    printf("Current Array Length: %d", count);
     printf("\n\n");
 }
