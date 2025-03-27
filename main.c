@@ -11,9 +11,9 @@ Institution: Leading University, Sylhet
 */
 
 # include <stdio.h>
-# include <ctype.h>
 # include <stdbool.h>
 # include <stdlib.h>
+# include "mechanism/bubble_sort.h"
 
 //--> Function Declarations
 void display();
@@ -207,6 +207,48 @@ int main()
                 while (getchar() != '\n');
                 continue;
 
+            case 9: // Sorting Array
+
+                if (count < 1 || size < 1)
+                {
+                    printf("Array is empty. Please insert values first!");
+                    printf("\n\n");
+
+                    while (getchar() != '\n');
+                    continue;
+                }
+
+                int options;
+                printf("Array Sorting Options: ");
+                printf("\n");
+
+                printf("1. Ascending Order");
+                printf("\t");
+                printf("2. Descending Order");
+                printf("\n\n");
+
+                printf("Enter your choice (1-2): ");
+                scanf("%d", &options);
+
+                switch (options) {
+
+                case 1:
+                    ascending(array, count);
+                    printf("\n\n");
+
+                    while (getchar() != '\n');
+                    continue;
+
+                case 2:
+                    descending(array, count);
+                    printf("\n\n");
+
+                    while (getchar() != '\n');
+                    continue;
+                }
+
+
+
 
 
             case 10:
@@ -286,7 +328,7 @@ void show_array_size(int array_size, int count)
     printf("\n\n");
 }
 
-void array_input(int size, int *array, int *count)
+void array_input(int size, int * array, int *count)
 {
     * count = 0;
 
