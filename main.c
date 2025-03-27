@@ -23,8 +23,8 @@ void show_array_size(int array_size, int count);
 void array_input(int size, int *array, int *count);
 void remove_val(int array[], int * array_size, int * count, int remove_value);
 void search_val(const int array[], const int * array_size, int search_value);
-int min_value(const int array[], int array_size);
-int max_value(const int array[], int array_size);
+int min_value(int * array, int array_size);
+int max_value(int * array, int array_size);
 
 //--> Main Code
 int main()
@@ -245,6 +245,12 @@ int main()
 
                     while (getchar() != '\n');
                     continue;
+
+                default:
+                    printf("Invalid choice. Please try again.");
+                    printf("\n\n");
+                    continue;
+
                 }
 
 
@@ -255,6 +261,11 @@ int main()
                 printf("Exiting the program...");
                 printf("\n");
                 exit(0);
+
+            default:
+                printf("Invalid input. Please try again.");
+                printf("\n\n");
+                continue;
             }
 
 
@@ -420,7 +431,7 @@ void search_val(const int array[], const int * array_size, int search_value)
     }
 }
 
-int min_value(const int array[], int array_size)
+int min_value(int * array , int array_size)
 {
     int min = array[0];
     for (int i = 1; i < array_size; i++)
@@ -433,7 +444,7 @@ int min_value(const int array[], int array_size)
     return min;
 }
 
-int max_value(const int array[], int array_size)
+int max_value(int * array, int array_size)
 {
     int max = array[0];
     for (int i = 1; i < array_size; i++)
