@@ -21,6 +21,8 @@ void show_array_size(int array_size, int count);
 void array_input(int size, int *array, int *count);
 void remove_val(int array[], int * array_size, int * count, int remove_value);
 void search_val(const int array[], const int * array_size, int search_value);
+int min_value(const int array[], int array_size);
+int max_value(const int array[], int array_size);
 
 //--> Main Code
 int main()
@@ -89,11 +91,13 @@ int main()
 
                 int u = 0, v = 0;
 
-                if (count == 0)
+
+                if (count < 1 || size < 1)
                 {
                     printf("Array is empty. Please insert values first!");
                     printf("\n\n");
 
+                    while (getchar() != '\n');
                     continue;
                 }
 
@@ -161,8 +165,46 @@ int main()
                 scanf("%d", &search_value);
 
                 search_val(array, &array_size, search_value);
+
                 while (getchar() != '\n');
                 continue;
+
+            case 7: //==> Minimum Value
+
+                if (count < 1 || size < 1)
+                {
+                    printf("Array is empty. Please insert values first!");
+                    printf("\n\n");
+
+                    while (getchar() != '\n');
+                    continue;
+                }
+
+                int min = min_value(array, array_size);
+                printf("Minimum value is: %d", min);
+                printf("\n\n");
+
+                while (getchar() != '\n');
+                continue;
+
+            case 8:
+
+                if (count < 1 || size < 1)
+                {
+                    printf("Array is empty. Please insert values first!");
+                    printf("\n\n");
+
+                    while (getchar() != '\n');
+                    continue;
+                }
+
+                int max = max_value(array, array_size);
+                printf("Minimum value is: %d", max);
+                printf("\n\n");
+
+                while (getchar() != '\n');
+                continue;
+
 
             }
 
@@ -327,6 +369,32 @@ void search_val(const int array[], const int * array_size, int search_value)
         printf("Value %d not found in the array.", search_value);
         printf("\n\n");
     }
+}
+
+int min_value(const int array[], int array_size)
+{
+    int min = array[0];
+    for (int i = 1; i < array_size; i++)
+    {
+        if (array[i] < min)
+        {
+            min = array[i];
+        }
+    }
+    return min;
+}
+
+int max_value(const int array[], int array_size)
+{
+    int max = array[0];
+    for (int i = 1; i < array_size; i++)
+    {
+        if (array[i] > max)
+        {
+            max = array[i];
+        }
+    }
+    return max;
 }
 
 
