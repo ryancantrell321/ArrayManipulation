@@ -3,6 +3,7 @@ Project Name: Array Manipulation
 Creation Date: Monday, March 24, 2025
 Created By: Farhan Nadim Iqbal
 Student ID: 0182420012101240
+GitHub ID: https://github.com/ryancantrell321
 Course Instructor: Md. Jehadul Islam Mony
 Batch: CSE 64F
 Department: Computer Science and Engineering
@@ -12,6 +13,7 @@ Institution: Leading University, Sylhet
 # include <stdio.h>
 # include <ctype.h>
 # include <stdbool.h>
+# include <stdlib.h>
 
 //--> Function Declarations
 void display();
@@ -187,7 +189,7 @@ int main()
                 while (getchar() != '\n');
                 continue;
 
-            case 8:
+            case 8: //==> Maximum Value
 
                 if (count < 1 || size < 1)
                 {
@@ -199,13 +201,18 @@ int main()
                 }
 
                 int max = max_value(array, array_size);
-                printf("Minimum value is: %d", max);
+                printf("Maximum value is: %d", max);
                 printf("\n\n");
 
                 while (getchar() != '\n');
                 continue;
 
 
+
+            case 10:
+                printf("Exiting the program...");
+                printf("\n");
+                exit(0);
             }
 
 
