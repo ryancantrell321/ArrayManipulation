@@ -282,6 +282,7 @@ void remove_val(int array[], int * array_size, int * count, int remove_value)
         printf("Value %d not found in the array.", remove_value);
         printf("\n");
     }
-
 }
+
+
 
