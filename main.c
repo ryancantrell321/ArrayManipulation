@@ -54,7 +54,7 @@ int main()
             //==> choice control
             int choice = 0;
 
-            printf("Enter your choice (1-9): ");
+            printf("Enter your choice (1-10): ");
             scanf("%d", &choice);
 
             if (choice < 1 || choice > 10)
@@ -121,6 +121,30 @@ int main()
                 while (getchar() != '\n');
                 continue;
 
+            case 5:
+
+                if (count < 1 || size < 1)
+                {
+                    printf("Array is empty. Please insert values first!");
+                    printf("\n\n");
+
+                    while (getchar() != '\n');
+                    continue;
+                }
+
+
+                int value;
+                printf("Enter the value you want to delete: ");
+                scanf("%d", &value);
+
+
+                remove_val(array, &array_size, &count, value);
+
+                while (getchar() != '\n');
+                continue;
+
+                
+
 
             }
 
@@ -149,23 +173,28 @@ void display()
     printf("Options: ");
     printf("\n");
     printf("1. Display Array Size");
-    printf("\n");
-    printf("2. Insert Values");
+    printf("\t");
+    // printf("\n");
+    printf("2. Insert Values (YOU CAN ONLY USE THIS ONCE FOR EACH PROGRAM INSTANCE)");
     printf("\n");
     printf("3. Display Values");
-    printf("\n");
+    printf("\t");
+    //printf("\n");
     printf("4. Update Values");
     printf("\n");
     printf("5. Delete Values");
-    printf("\n");
+    printf("\t");
+    //printf("\n");
     printf("6. Search Values");
     printf("\n");
     printf("7. Smallest Value");
-    printf("\n");
+    printf("\t");
+    //printf("\n");
     printf("8. Largest Value");
     printf("\n");
-    printf("9. Sort Array (Ascending/Descending)");
-    printf("\n");
+    printf("9. Sort Array");
+    printf("\t\t");
+    //printf("\n");
     printf("10. Exit");
     printf("\n\n");
 
@@ -176,15 +205,9 @@ void show_array(int array[], int *count)
     printf("Array elements are:\n");
     for (int i = 0; i < * count; i++)
     {
-        if (array[i] == 0)
-        {
-            printf("");
-        }
-        else {
-            printf("%d ", array[i]);
-
-        }
+        printf("%d ", array[i]);
     }
+
     printf("\n\n");
 }
 
@@ -192,7 +215,7 @@ void show_array_size(int array_size, int count)
 {
     printf("Maximum Specified Array Size: %d", array_size);
     printf("\n");
-    printf("Current Array Length: %d", count);
+    printf("Filled Array Length: %d", count);
     printf("\n\n");
 }
 
@@ -226,19 +249,39 @@ void array_input(int size, int *array, int *count)
 
 void remove_val(int array[], int * array_size, int * count, int remove_value)
 {
-    for (int k = 0; k < *array_size; k++)
+
+    bool flag = false;
+
+    for (int i = 0; i < * array_size; i++) // Integer 'i' travels through the memory of array_size
     {
-        if (array[k] == remove_value)
+        if (array[i] == remove_value)
         {
-            for (int w = k; w < (*array_size - 1); w++)
+            printf("Value %d has been found at position %d.", remove_value, i + 1);
+            printf("\n");
+
+            // Shifting positions right to left
+            for (int j = i; j < * array_size - 1; j++)
             {
-                array[w] = array[w+1];
+                array[j] = array[j + 1];
             }
-            (* array_size)--;
-            (* count)--;
-            array[* array_size] = 0;
-            k--;
+            printf("Value %d has been deleted.", remove_value);
+            printf("\n\n");
+
+            (*array_size)--;
+            (*count)--;
+            i--;
+
+            flag = true;
+            break;
         }
+
     }
+
+    if (flag == false)
+    {
+        printf("Value %d not found in the array.", remove_value);
+        printf("\n");
+    }
+
 }
 
