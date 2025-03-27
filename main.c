@@ -20,6 +20,7 @@ void show_array(int array[], int *count);
 void show_array_size(int array_size, int count);
 void array_input(int size, int *array, int *count);
 void remove_val(int array[], int * array_size, int * count, int remove_value);
+void search_val(const int array[], const int * array_size, int search_value);
 
 //--> Main Code
 int main()
@@ -80,11 +81,11 @@ int main()
                 continue;
 
 
-            case 3:
+            case 3: //==> Array Display
                 show_array(array, &count);
                 continue;
 
-            case 4:
+            case 4: //==> Array Updater
 
                 int u = 0, v = 0;
 
@@ -121,7 +122,7 @@ int main()
                 while (getchar() != '\n');
                 continue;
 
-            case 5:
+            case 5: //==> Array Deleter
 
                 if (count < 1 || size < 1)
                 {
@@ -143,8 +144,25 @@ int main()
                 while (getchar() != '\n');
                 continue;
 
-                
 
+            case 6: //==> Array Search
+
+                if (count < 1 || size < 1)
+                {
+                    printf("Array is empty. Please insert values first!");
+                    printf("\n\n");
+
+                    while (getchar() != '\n');
+                    continue;
+                }
+
+                int search_value;
+                printf("Enter the value you want to search: ");
+                scanf("%d", &search_value);
+
+                search_val(array, &array_size, search_value);
+                while (getchar() != '\n');
+                continue;
 
             }
 
@@ -221,6 +239,8 @@ void show_array_size(int array_size, int count)
 
 void array_input(int size, int *array, int *count)
 {
+    * count = 0;
+
     for (int i = 0; i < size; i++)
     {
         printf("Enter Array Element %d: ", i + 1);
@@ -284,5 +304,29 @@ void remove_val(int array[], int * array_size, int * count, int remove_value)
     }
 }
 
+void search_val(const int array[], const int * array_size, int search_value)
+{
+    bool flag = false;
+
+    for (int i = 0; i < * array_size; i++)
+    {
+        if (array[i] == search_value)
+        {
+            printf("Value %d has been found at position %d.", search_value, i + 1);
+            printf("\n\n");
+
+
+            flag = true;
+            break;
+        }
+
+    }
+
+    if (flag == false)
+    {
+        printf("Value %d not found in the array.", search_value);
+        printf("\n\n");
+    }
+}
 
 
