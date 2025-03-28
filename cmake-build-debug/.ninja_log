@@ -14,3 +14,7 @@
 131	571	7648572466964794	CMakeFiles/ArrayManipulation.dir/mechanism/max_min.c.obj	caa5f1629134b36a
 70	580	7648572466354802	CMakeFiles/ArrayManipulation.dir/main.c.obj	c7d5a9172fb1ca93
 581	1138	7648572471477247	ArrayManipulation.exe	7be5cb8ba7a06c2c
+8	201	7648586994529135	CMakeFiles/ArrayManipulation.dir/mechanism/basics.c.obj	6abb183b56efd1c9
+202	629	7648586996475612	ArrayManipulation.exe	7be5cb8ba7a06c2c
+11	209	7648587254294016	CMakeFiles/ArrayManipulation.dir/mechanism/basics.c.obj	6abb183b56efd1c9
+211	630	7648587256290393	ArrayManipulation.exe	7be5cb8ba7a06c2c

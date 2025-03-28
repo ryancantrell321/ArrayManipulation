@@ -8,7 +8,9 @@
 //--> Function Logic
 void info()
 {
-    printf("Welcome to Array Manipulation Program.");
+    printf("Welcome to Array Manipulation Program");
+    printf("\n");
+    printf("Licensed under the MIT License.");
     printf("\n\n");
     printf("Usage Guide:");
     printf("\n");
