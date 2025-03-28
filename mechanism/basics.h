@@ -9,4 +9,5 @@ void info();
 void show_array(int array[], int *count);
 void show_array_size(int array_size, int count);
 void array_input(int size, int *array, int *count);
+void display_array(const int array[], const int * array_size);
 #endif //BASICS_H

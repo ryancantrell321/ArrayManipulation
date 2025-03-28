@@ -4,6 +4,7 @@
 
 # include "search_remove_values.h"
 # include  <stdio.h>
+# include <stdbool.h>
 
 void remove_val(int array[], int * array_size, int * count, int remove_value)
 {
