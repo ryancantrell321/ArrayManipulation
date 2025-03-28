@@ -14,17 +14,9 @@ Institution: Leading University, Sylhet
 # include <stdbool.h>
 # include <stdlib.h>
 # include "mechanism/bubble_sort.h"
-
-//--> Function Declarations
-void display();
-void info();
-void show_array(int array[], int *count);
-void show_array_size(int array_size, int count);
-void array_input(int size, int *array, int *count);
-void remove_val(int array[], int * array_size, int * count, int remove_value);
-void search_val(const int array[], const int * array_size, int search_value);
-int min_value(int * array, int array_size);
-int max_value(int * array, int array_size);
+# include "mechanism/search_remove_values.h"
+# include "mechanism/basics.h"
+# include "mechanism/max_min.h"
 
 //--> Main Code
 int main()
@@ -124,6 +116,7 @@ int main()
                 array[u - 1] = v;
 
                 printf("Value updated successfully!");
+                printf("\n\n");
 
                 while (getchar() != '\n');
                 continue;
@@ -253,10 +246,6 @@ int main()
 
                 }
 
-
-
-
-
             case 10:
                 printf("Exiting the program...");
                 printf("\n");
@@ -274,187 +263,3 @@ int main()
         }
     }
 }
-
-//--> Function Logic
-void info()
-{
-    printf("Welcome to Array Manipulation Program.");
-    printf("\n\n");
-    printf("Usage Guide:");
-    printf("\n");
-    printf("You will first have to specify the number of elements you will enter. 0 is considered a blank value.");
-    printf("\n");
-    printf("Then you will be given several options to choose from.");
-    printf("\n\n");
-
-}
-void display()
-{
-    printf("Options: ");
-    printf("\n");
-    printf("1. Display Array Size");
-    printf("\t");
-    // printf("\n");
-    printf("2. Insert Values (YOU CAN ONLY USE THIS ONCE FOR EACH PROGRAM INSTANCE)");
-    printf("\n");
-    printf("3. Display Values");
-    printf("\t");
-    //printf("\n");
-    printf("4. Update Values");
-    printf("\n");
-    printf("5. Delete Values");
-    printf("\t");
-    //printf("\n");
-    printf("6. Search Values");
-    printf("\n");
-    printf("7. Smallest Value");
-    printf("\t");
-    //printf("\n");
-    printf("8. Largest Value");
-    printf("\n");
-    printf("9. Sort Array");
-    printf("\t\t");
-    //printf("\n");
-    printf("10. Exit");
-    printf("\n\n");
-
-}
-
-void show_array(int array[], int *count)
-{
-    printf("Array elements are:\n");
-    for (int i = 0; i < * count; i++)
-    {
-        printf("%d ", array[i]);
-    }
-
-    printf("\n\n");
-}
-
-void show_array_size(int array_size, int count)
-{
-    printf("Maximum Specified Array Size: %d", array_size);
-    printf("\n");
-    printf("Filled Array Length: %d", count);
-    printf("\n\n");
-}
-
-void array_input(int size, int * array, int *count)
-{
-    * count = 0;
-
-    for (int i = 0; i < size; i++)
-    {
-        printf("Enter Array Element %d: ", i + 1);
-        if (scanf("%d", &array[i]) != 1)
-        {
-            printf("Entry Exited (Type 3 to display the values entered)");
-            printf("\n\n");
-
-            while (getchar() != '\n');
-            break;
-        }
-        (*count)++;
-
-        if (*count == size)
-        {
-            printf("The Array is Full!");
-            printf("\n");
-            printf("(Type 3 to display the values)");
-            printf("\n");
-            printf("(Type 1 to view the array length)");
-            printf("\n\n");
-            break;
-        }
-    }
-}
-
-void remove_val(int array[], int * array_size, int * count, int remove_value)
-{
-
-    bool flag = false;
-
-    for (int i = 0; i < * array_size; i++) // Integer 'i' travels through the memory of array_size
-    {
-        if (array[i] == remove_value)
-        {
-            printf("Value %d has been found at position %d.", remove_value, i + 1);
-            printf("\n");
-
-            // Shifting positions right to left
-            for (int j = i; j < * array_size - 1; j++)
-            {
-                array[j] = array[j + 1];
-            }
-            printf("Value %d has been deleted.", remove_value);
-            printf("\n\n");
-
-            (*array_size)--;
-            (*count)--;
-            i--;
-
-            flag = true;
-            break;
-        }
-
-    }
-
-    if (flag == false)
-    {
-        printf("Value %d not found in the array.", remove_value);
-        printf("\n");
-    }
-}
-
-void search_val(const int array[], const int * array_size, int search_value)
-{
-    bool flag = false;
-
-    for (int i = 0; i < * array_size; i++)
-    {
-        if (array[i] == search_value)
-        {
-            printf("Value %d has been found at position %d.", search_value, i + 1);
-            printf("\n\n");
-
-
-            flag = true;
-            break;
-        }
-
-    }
-
-    if (flag == false)
-    {
-        printf("Value %d not found in the array.", search_value);
-        printf("\n\n");
-    }
-}
-
-int min_value(int * array , int array_size)
-{
-    int min = array[0];
-    for (int i = 1; i < array_size; i++)
-    {
-        if (array[i] < min)
-        {
-            min = array[i];
-        }
-    }
-    return min;
-}
-
-int max_value(int * array, int array_size)
-{
-    int max = array[0];
-    for (int i = 1; i < array_size; i++)
-    {
-        if (array[i] > max)
-        {
-            max = array[i];
-        }
-    }
-    return max;
-}
-
-

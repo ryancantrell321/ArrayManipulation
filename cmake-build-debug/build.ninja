@@ -61,6 +61,24 @@ build CMakeFiles/ArrayManipulation.dir/mechanism/bubble_sort.c.obj: C_COMPILER__
   OBJECT_DIR = CMakeFiles\ArrayManipulation.dir
   OBJECT_FILE_DIR = CMakeFiles\ArrayManipulation.dir\mechanism
 
+build CMakeFiles/ArrayManipulation.dir/mechanism/search_remove_values.c.obj: C_COMPILER__ArrayManipulation_unscanned_Debug F$:/Leading$ University/Subjects/C$ Programming/Projects/ArrayManipulation/mechanism/search_remove_values.c || cmake_object_order_depends_target_ArrayManipulation
+  DEP_FILE = CMakeFiles\ArrayManipulation.dir\mechanism\search_remove_values.c.obj.d
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\ArrayManipulation.dir
+  OBJECT_FILE_DIR = CMakeFiles\ArrayManipulation.dir\mechanism
+
+build CMakeFiles/ArrayManipulation.dir/mechanism/max_min.c.obj: C_COMPILER__ArrayManipulation_unscanned_Debug F$:/Leading$ University/Subjects/C$ Programming/Projects/ArrayManipulation/mechanism/max_min.c || cmake_object_order_depends_target_ArrayManipulation
+  DEP_FILE = CMakeFiles\ArrayManipulation.dir\mechanism\max_min.c.obj.d
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\ArrayManipulation.dir
+  OBJECT_FILE_DIR = CMakeFiles\ArrayManipulation.dir\mechanism
+
+build CMakeFiles/ArrayManipulation.dir/mechanism/basics.c.obj: C_COMPILER__ArrayManipulation_unscanned_Debug F$:/Leading$ University/Subjects/C$ Programming/Projects/ArrayManipulation/mechanism/basics.c || cmake_object_order_depends_target_ArrayManipulation
+  DEP_FILE = CMakeFiles\ArrayManipulation.dir\mechanism\basics.c.obj.d
+  FLAGS = -g -std=gnu2x -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\ArrayManipulation.dir
+  OBJECT_FILE_DIR = CMakeFiles\ArrayManipulation.dir\mechanism
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ArrayManipulation
@@ -69,7 +87,7 @@ build CMakeFiles/ArrayManipulation.dir/mechanism/bubble_sort.c.obj: C_COMPILER__
 #############################################
 # Link the executable ArrayManipulation.exe
 
-build ArrayManipulation.exe: C_EXECUTABLE_LINKER__ArrayManipulation_Debug CMakeFiles/ArrayManipulation.dir/main.c.obj CMakeFiles/ArrayManipulation.dir/mechanism/bubble_sort.c.obj
+build ArrayManipulation.exe: C_EXECUTABLE_LINKER__ArrayManipulation_Debug CMakeFiles/ArrayManipulation.dir/main.c.obj CMakeFiles/ArrayManipulation.dir/mechanism/bubble_sort.c.obj CMakeFiles/ArrayManipulation.dir/mechanism/search_remove_values.c.obj CMakeFiles/ArrayManipulation.dir/mechanism/max_min.c.obj CMakeFiles/ArrayManipulation.dir/mechanism/basics.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ArrayManipulation.dir
