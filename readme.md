@@ -3,7 +3,8 @@ Program for Manipulating Arrays using C
 
 ![Static Badge](https://img.shields.io/badge/Language-C-darkgreen)
 ![GPL v3.0](https://img.shields.io/badge/License-MIT%20License-darkred)
-![GitHub Downloads](https://img.shields.io/github/downloads/ryancantrell321/ArrayManipulation/total) 
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/ryancantrell321/ArrayManipulation/total)
+
 
 ## Project Information
 
