@@ -5,7 +5,7 @@
 #include "max_min.h"
 
 
-int min_value(const int * array , int array_size)
+int min_value(int * array , int array_size)
 {
     int min = array[0];
     for (int i = 1; i < array_size; i++)
@@ -18,7 +18,7 @@ int min_value(const int * array , int array_size)
     return min;
 }
 
-int max_value(const int * array, int array_size)
+int max_value(int * array, int array_size)
 {
     int max = array[0];
     for (int i = 1; i < array_size; i++)
