@@ -15,7 +15,7 @@ Institution: Leading University, Sylhet
 # include <stdlib.h>
 
 
-//--> Declaring Function
+//--> Declaring Functions
 void display();
 void info();
 void show_array(const int array[], int count);
