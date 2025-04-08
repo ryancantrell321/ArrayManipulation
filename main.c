@@ -18,16 +18,15 @@ Institution: Leading University, Sylhet
 //--> Declaring Function
 void display();
 void info();
-void show_array(int array[], int *count);
+void show_array(const int array[], int count);
 void show_array_size(int array_size, int count);
 void ascending(int * array, int count);
 void descending(int * array, int count);
 void array_input(int size, int *array, int *count);
-void display_array(const int array[], const int * array_size);
 void remove_val(int array[], int * array_size, int * count, int remove_value);
-void search_val(const int array[], const int * array_size, int search_value);
-int min_value(int * array, int array_size);
-int max_value(int * array, int array_size);
+void search_val(const int array[], int array_size, int search_value);
+int min_value(const int array[], int count);
+int max_value(const int array[], int count);
 
 //--> Code
 int main()
@@ -89,7 +88,9 @@ int main()
 
 
             case 3: //==> Array Display
-                show_array(array, &count);
+
+                show_array(array, count);
+
                 continue;
 
             case 4: //==> Array Updater
@@ -170,7 +171,7 @@ int main()
                 printf("Enter the value you want to search: ");
                 scanf("%d", &search_value);
 
-                search_val(array, &array_size, search_value);
+                search_val(array, array_size, search_value);
 
                 while (getchar() != '\n');
                 continue;
@@ -186,7 +187,7 @@ int main()
                     continue;
                 }
 
-                int min = min_value(array, array_size);
+                int min = min_value(array, count);
                 printf("Minimum value is: %d", min);
                 printf("\n\n");
 
@@ -204,7 +205,7 @@ int main()
                     continue;
                 }
 
-                int max = max_value(array, array_size);
+                int max = max_value(array, count);
                 printf("Maximum value is: %d", max);
                 printf("\n\n");
 
@@ -299,7 +300,7 @@ void display()
     printf("1. Display Array Size");
     printf("\t");
     // printf("\n");
-    printf("2. Insert Values (YOU CAN ONLY USE THIS ONCE FOR EACH PROGRAM INSTANCE)");
+    printf("2. Insert Values (NEXT RUN WILL RESET THE ARRAY)");
     printf("\n");
     printf("3. Display Values");
     printf("\t");
@@ -324,19 +325,10 @@ void display()
 
 }
 
-void display_array(const int array[], const int * array_size)
-{
-    for (int i = 0; i < * array_size; i++)
-    {
-        printf("%d ", array[i]);
-    }
-    printf("\n\n");
-}
-
-void show_array(int array[], int *count)
+void show_array(const int array[], int count)
 {
     printf("Array elements are:\n");
-    for (int i = 0; i < * count; i++)
+    for (int i = 0; i < count; i++)
     {
         printf("%d ", array[i]);
     }
@@ -358,7 +350,7 @@ void array_input(int size, int * array, int *count)
 
     for (int i = 0; i < size; i++)
     {
-        printf("Enter Array Element %d: ", i + 1);
+        printf("Enter Array Element %d (TYPE ANY ALPHABETICAL CHARACTER TO EXIT THE ENTRY): ", i + 1);
         if (scanf("%d", &array[i]) != 1)
         {
             printf("Entry Exited (Type 3 to display the values entered)");
@@ -421,11 +413,11 @@ void remove_val(int array[], int * array_size, int * count, int remove_value)
     }
 }
 
-void search_val(const int array[], const int * array_size, int search_value)
+void search_val(const int array[], int array_size, int search_value)
 {
     bool flag = false;
 
-    for (int i = 0; i < * array_size; i++)
+    for (int i = 0; i < array_size; i++)
     {
         if (array[i] == search_value)
         {
@@ -448,10 +440,10 @@ void search_val(const int array[], const int * array_size, int search_value)
 
 
 // ==> minimum and maximum array value
-int min_value(int * array , int array_size)
+int min_value(const int array[] , int count)
 {
     int min = array[0];
-    for (int i = 1; i < array_size; i++)
+    for (int i = 1; i < count; i++)
     {
         if (array[i] < min)
         {
@@ -461,10 +453,10 @@ int min_value(int * array , int array_size)
     return min;
 }
 
-int max_value(int * array, int array_size)
+int max_value(const int array[], int count)
 {
     int max = array[0];
-    for (int i = 1; i < array_size; i++)
+    for (int i = 1; i < count; i++)
     {
         if (array[i] > max)
         {
@@ -482,7 +474,7 @@ void ascending(int * array, int count)
     {
         for (int j = 0; j < count - i - 1; j++)
         {
-            if (array[j] > array[j + 1]) //==> elements swap
+            if (array[j] > array[j + 1]) //==> small to big
             {
                 int temp = array[j];
                 array[j] = array[j + 1];
@@ -503,7 +495,7 @@ void descending(int * array, int count)
     {
         for (int j = 0; j < count - i - 1; j++)
         {
-            if (array[j] < array[j + 1]) //==> elements swap
+            if (array[j] < array[j + 1]) //==> big to small
             {
                 int temp = array[j];
                 array[j] = array[j + 1];
